@@ -1,0 +1,152 @@
+﻿@model CostEstimate.Models.CostModel
+@*<h3>@Model.Projects.JobName - @Model.Projects.LegalDescription</h3>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCosting">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <input asp-for="ProjectId" class="form-control" />
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AveragePerSqFootFinsihed" class="control-label"></label>
+                <input asp-for="AveragePerSqFootFinsihed" class="form-control" />
+                <span asp-validation-for="AveragePerSqFootFinsihed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvgCostGarage" class="control-label"></label>
+                <input asp-for="AvgCostGarage" class="form-control" />
+                <span asp-validation-for="AvgCostGarage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvgCostMainLevel" class="control-label"></label>
+                <input asp-for="AvgCostMainLevel" class="form-control" />
+                <span asp-validation-for="AvgCostMainLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvgCostUnfinsihedBasement" class="control-label"></label>
+                <input asp-for="AvgCostUnfinsihedBasement" class="form-control" />
+                <span asp-validation-for="AvgCostUnfinsihedBasement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvgCostUpperLoft" class="control-label"></label>
+                <input asp-for="AvgCostUpperLoft" class="form-control" />
+                <span asp-validation-for="AvgCostUpperLoft" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AvgPerSqFtFinBasement" class="control-label"></label>
+                <input asp-for="AvgPerSqFtFinBasement" class="form-control" />
+                <span asp-validation-for="AvgPerSqFtFinBasement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BasementUnfinishedSqFeet" class="control-label"></label>
+                <input asp-for="BasementUnfinishedSqFeet" class="form-control" />
+                <span asp-validation-for="BasementUnfinishedSqFeet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FinishedBasement" class="control-label"></label>
+                <input asp-for="FinishedBasement" class="form-control" />
+                <span asp-validation-for="FinishedBasement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Garage" class="control-label"></label>
+                <input asp-for="Garage" class="form-control" />
+                <span asp-validation-for="Garage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainLevelSquareFeet" class="control-label"></label>
+                <input asp-for="MainLevelSquareFeet" class="form-control" />
+                <span asp-validation-for="MainLevelSquareFeet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalSquareFtHouse" class="control-label"></label>
+                <input asp-for="TotalSquareFtHouse" class="form-control" />
+                <span asp-validation-for="TotalSquareFtHouse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalSquareFtUnderRoof" class="control-label"></label>
+                <input asp-for="TotalSquareFtUnderRoof" class="form-control" />
+                <span asp-validation-for="TotalSquareFtUnderRoof" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpperLevelLoft" class="control-label"></label>
+                <input asp-for="UpperLevelLoft" class="form-control" />
+                <span asp-validation-for="UpperLevelLoft" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="CostModel.AveragePerSqFootFinsihed" class="control-label"></label>
+            <input asp-for="CostModel.AveragePerSqFootFinsihed" class="form-control" />
+            <span asp-validation-for="CostModel.AveragePerSqFootFinsihed" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.AvgCostGarage" class="control-label"></label>
+            <input asp-for="CostModel.AvgCostGarage" class="form-control" />
+            <span asp-validation-for="CostModel.AvgCostGarage" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.AvgCostMainLevel" class="control-label"></label>
+            <input asp-for="CostModel.AvgCostMainLevel" class="form-control" />
+            <span asp-validation-for="CostModel.AvgCostMainLevel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.AvgCostUnfinsihedBasement" class="control-label"></label>
+            <input asp-for="CostModel.AvgCostUnfinsihedBasement" class="form-control" />
+            <span asp-validation-for="CostModel.AvgCostUnfinsihedBasement" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.AvgCostUpperLoft" class="control-label"></label>
+            <input asp-for="CostModel.AvgCostUpperLoft" class="form-control" />
+            <span asp-validation-for="CostModel.AvgCostUpperLoft" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CostModel.AvgPerSqFtFinBasement" class="control-label"></label>
+            <input asp-for="CostModel.AvgPerSqFtFinBasement" class="form-control" />
+            <span asp-validation-for="CostModel.AvgPerSqFtFinBasement" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.BasementUnfinishedSqFeet" class="control-label"></label>
+            <input asp-for="CostModel.BasementUnfinishedSqFeet" class="form-control" />
+            <span asp-validation-for="CostModel.BasementUnfinishedSqFeet" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.FinishedBasement" class="control-label"></label>
+            <input asp-for="CostModel.FinishedBasement" class="form-control" />
+            <span asp-validation-for="CostModel.FinishedBasement" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.Garage" class="control-label"></label>
+            <input asp-for="CostModel.Garage" class="form-control" />
+            <span asp-validation-for="CostModel.Garage" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.MainLevelSquareFeet" class="control-label"></label>
+            <input asp-for="CostModel.MainLevelSquareFeet" class="form-control" />
+            <span asp-validation-for="CostModel.MainLevelSquareFeet" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.TotalSquareFtHouse" class="control-label"></label>
+            <input asp-for="CostModel.TotalSquareFtHouse" class="form-control" />
+            <span asp-validation-for="CostModel.TotalSquareFtHouse" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.TotalSquareFtUnderRoof" class="control-label"></label>
+            <input asp-for="CostModel.TotalSquareFtUnderRoof" class="form-control" />
+            <span asp-validation-for="CostModel.TotalSquareFtUnderRoof" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CostModel.UpperLevelLoft" class="control-label"></label>
+            <input asp-for="CostModel.UpperLevelLoft" class="form-control" />
+            <span asp-validation-for="CostModel.UpperLevelLoft" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<a asp-action="Index">Back</a>

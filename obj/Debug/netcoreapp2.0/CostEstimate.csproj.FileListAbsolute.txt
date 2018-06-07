@@ -1,0 +1,12 @@
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\bin\Debug\netcoreapp2.0\CostEstimate.deps.json
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\bin\Debug\netcoreapp2.0\CostEstimate.runtimeconfig.json
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\bin\Debug\netcoreapp2.0\CostEstimate.runtimeconfig.dev.json
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\bin\Debug\netcoreapp2.0\CostEstimate.dll
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\bin\Debug\netcoreapp2.0\CostEstimate.pdb
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\obj\Debug\netcoreapp2.0\CostEstimate.csproj.CoreCompileInputs.cache
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\obj\Debug\netcoreapp2.0\CostEstimate.AssemblyInfoInputs.cache
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\obj\Debug\netcoreapp2.0\CostEstimate.AssemblyInfo.cs
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\obj\Debug\netcoreapp2.0\CostEstimate.dll
+c:\users\rick\documents\visual studio 2017\Projects\CostEstimate\obj\Debug\netcoreapp2.0\CostEstimate.pdb
+C:\Users\rick\Documents\Visual Studio 2017\Projects\CostEstimate\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\rick\Documents\Visual Studio 2017\Projects\CostEstimate\obj\Debug\netcoreapp2.0\CostEstimate.csprojAssemblyReference.cache

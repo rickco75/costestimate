@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CostEstimate.Models.Projects>
+
+<hr />
+    <form asp-controller="Project" asp-action="Index" method="get">
+        <p>
+            Job Name <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+    <p><a asp-action="Create">Create New Project</a> | <a asp-action="ViewCost">View Cost Models</a> | <a asp-action="CreateCosting">Create Cost Model</a></p>
+<hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Job Name</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                <th>Legal Description</th>
+                <th>Cell</th>
+                <th>Home</th>
+                <th>Fax</th>
+                <th>Lot Number</th>
+                <th>Name</th>
+                <th>Street Name</th>
+                <th>Street Number</th>
+                <th>Subdivision Name</th>
+                <th colspan="2">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model){
+            <tr>
+                <td><a asp-action="ViewCost" asp-route-id="@item.Id">@item.JobName</a></td>
+                <td>@item.City</td>
+                <td>@item.State</td>
+                <td>@item.ZipCode</td>
+                <td>@item.LegalDescription</td>
+                <td>@item.Cell</td>
+                <td>@item.Home</td>
+                <td>@item.Fax</td>
+                <td>@item.LotNumber</td>
+                <td>@item.Name</td>
+                <td>@item.StreetName</td>
+                <td>@item.StreetNumber</td>
+                <td>@item.SubdivisionName</td>
+                <td><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                <td><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>

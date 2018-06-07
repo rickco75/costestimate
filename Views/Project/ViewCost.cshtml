@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CostEstimate.Models.CostModel>
+<hr/>  
+  <p><a asp-action="Index">View Projects</a> | <a asp-action="Create">Create New Project</a> | <a asp-action="ViewCost">View Cost Models</a> | <a asp-action="CreateCosting">Create Cost Model</a></p>
+<hr />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ProjectId</th>
+            <th>AveragePerSqFootFinsihed</th>
+            <th>AvgCostGarage</th>
+            <th>AvgCostMainLevel</th>
+            <th>AvgCostUnfinsihedBasement</th>
+            <th>AvgCostUpperLoft</th>
+            <th>AvgPerSqFtFinBasement</th>
+            <th>BasementUnfinishedSqFeet</th>
+            <th>FinishedBasement</th>
+            <th>Garage</th>
+            <th>MainLevelSquareFeet</th>
+            <th>TotalSquareFtHouse</th>
+            <th>TotalSquareFtUnderRoof</th>
+            <th>UpperLevelLoft</th>
+            <th colspan="2">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProjectId</td>
+                <td>@item.AveragePerSqFootFinsihed</td>
+                <td>@item.AvgCostGarage</td>
+                <td>@item.AvgCostMainLevel</td>
+                <td>@item.AvgCostUnfinsihedBasement</td>
+                <td>@item.AvgCostUpperLoft</td>
+                <td>@item.AvgPerSqFtFinBasement</td>
+                <td>@item.BasementUnfinishedSqFeet</td>
+                <td>@item.FinishedBasement</td>
+                <td>@item.Garage</td>
+                <td>@item.MainLevelSquareFeet</td>
+                <td>@item.TotalSquareFtHouse</td>
+                <td>@item.TotalSquareFtUnderRoof</td>
+                <td>@item.UpperLevelLoft</td>
+                <td>@*<a asp-action="Costing" asp-route-id="@item.Id">Edit</a>*@
+                @Html.ActionLink("Edit","Costing","Project", new { id = item.Id, projectId = item.ProjectId },null)</td>
+                <td><a asp-action="DeleteCostModel" asp-route-id="@item.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

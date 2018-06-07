@@ -1,0 +1,44 @@
+﻿@*@model IEnumerable<CostEstimate.Models.Options>
+    *@
+    @model CostEstimate.Models.OptionsValueViewModel
+
+    <h2>Options</h2>
+    <table>
+        <tr>
+            <td colspan="2"><a asp-action="Create">Add New Option *</a></td>
+        </tr>
+    </table>
+    <hr />
+    <form asp-controller="Home" asp-action="Options" method="get">
+        <p>
+            Option Values
+            <select asp-for="optionValues" asp-items="Model.optionValues">
+                <option value="">All</option>
+            </select>
+
+            Option Name <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option Name</th>
+                <th>Option Value</th>
+                <th>Date Modified</th>
+                <th colspan="2">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.options){
+            <tr>
+                <td>@item.OptionName</td>
+                <td>@item.OptionValue</td>
+                <td>@item.DateChanged</td>
+                <td><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                <td><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
