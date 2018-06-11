@@ -8,9 +8,9 @@ namespace CostEstimate.Models
 {
     public class ProjectsValueViewModel
     {
-        public List<Projects> projects;
-        public SelectList projectValues;
+        public int Id { get; set; }
+        public string JobName { get; set; }
+        public List<SelectListItem> Projects { get; set; }
         public CostModel CostModel { get; set; }
-        public string projectNameValues { get; set; }
     }
 }

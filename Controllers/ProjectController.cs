@@ -73,16 +73,16 @@ namespace CostEstimate.Controllers
         //        return NotFound();
         //    }
 
-        //    var record = (from p in _context.Projects
-        //                  join c in _context.CostModel
-        //                  on p.Id equals c.ProjectId into ps
-        //                  from c in ps.DefaultIfEmpty()
-        //                  where p.Id == id
-        //                  select new ProjectCostViewModel
-        //                  {
-        //                      Projects = p,
-        //                      CostModel = c
-        //                  }).FirstOrDefault();
+        //var record = (from p in _context.Projects
+        //              join c in _context.CostModel
+        //              on p.Id equals c.ProjectId into ps
+        //              from c in ps.DefaultIfEmpty()
+        //              where p.Id == id
+        //              select new ProjectCostViewModel
+        //              {
+        //                  Projects = p,
+        //                  CostModel = c
+        //              }).FirstOrDefault();
         //    if (record == null)
         //    {
         //        return NotFound();
@@ -97,17 +97,17 @@ namespace CostEstimate.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CreateCostModel()
-        {
-            IQueryable<string> projectValue = from p in _context.Projects
-                                              orderby p.JobName
-                                              select (p.Id.ToString() + p.JobName);
+        //public async Task<IActionResult> CreateCostModel()
+        //{
+        //    IQueryable<string> projectValue = from p in _context.Projects
+        //                                      orderby p.JobName
+        //                                      select (p.Id.ToString() + p.JobName);
 
-            var projectsValueVM = new ProjectsValueViewModel();
-            projectsValueVM.projectValues = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(await projectValue.Distinct().ToListAsync());
+        //    var projectsValueVM = new ProjectsValueViewModel();
+        //    projectsValueVM.projectValues = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(await projectValue.Distinct().ToListAsync());
 
-            return View(projectsValueVM);
-        }
+        //    return View(projectsValueVM);
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -148,49 +148,51 @@ namespace CostEstimate.Controllers
         [Authorize]
         public async Task<IActionResult> ViewCost(int? id)
         {
-
-            //var costModelList = _context.CostModel.ToListAsync();
-            var costModelList = (from c in _context.CostModel
-                                 where c.ProjectId == id
-                                 select c);
+            var cm = from cost in _context.CostModel
+                     join proj in _context.Projects
+                     on cost.ProjectId equals proj.Id
+                     where cost.ProjectId == id
+                     select new CostProjectViewModel
+                     {
+                         Projects = proj , CostModel = cost 
+                     };            
+            
             if (id == null)
             {
-                costModelList = _context.CostModel;
+                cm = from cost in _context.CostModel
+                     join proj in _context.Projects
+                     on cost.ProjectId equals proj.Id
+                     select new CostProjectViewModel
+                     {
+                         Projects = proj,
+                         CostModel = cost
+                     };
+
             }
-            return View(await costModelList.ToListAsync());
+            return View(await cm.ToListAsync());
         }
 
-        //[Authorize]
-        //public IActionResult Costing(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var record = (from c in _context.CostModel
-        //                  where c.ProjectId == id
-        //                  select c).FirstOrDefault();
-
-        //    if (record == null)
-        //    {
-        //        CostModel cm = new CostModel();
-        //        return View(cm);
-        //    }
-
-        //    return View(record);
-        //}
         [Authorize]
-        public IActionResult Costing(int? id)
+        public IActionResult Costing(int? id, int projectId)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var record = (from c in _context.CostModel
-                          where c.Id == id
-                          select c).FirstOrDefault();
+            //var record = (from c in _context.CostModel
+            //              where c.Id == id
+            //              select c).FirstOrDefault();
+
+            var record = from cost in _context.CostModel
+                     join proj in _context.Projects
+                     on cost.ProjectId equals proj.Id
+                     where cost.ProjectId == projectId
+                     select new CostProjectViewModel
+                     {
+                         Projects = proj,
+                         CostModel = cost
+                     };
 
             if (record == null)
             {
@@ -198,32 +200,22 @@ namespace CostEstimate.Controllers
                 return View(cm);
             }
 
-            return View(record);
+            return View(record.FirstOrDefault());
         }
 
-        public async Task<IActionResult> CreateCosting()
+        public IActionResult CreateCosting()
         {
-            //ViewData["projects"] = (from p in _context.Projects select p.JobName).ToList();
-            IQueryable<string> projectValue = from p in _context.Projects
-                                              orderby p.JobName
-                                              select p.JobName;
-            var projects = from p in _context.Projects select p;
 
-            var projectsValueVM = new ProjectsValueViewModel();
-            projectsValueVM.projectValues = new SelectList(await projectValue.Distinct().ToListAsync());
-            projectsValueVM.projects = await projects.ToListAsync();
+            var vm = new ProjectsValueViewModel();
+            vm.Projects = _context.Projects
+                            .Select(a => new SelectListItem()
+                            {
+                                Value = a.Id.ToString(),
+                                Text = a.JobName.ToString()
+                            })
+                            .ToList();
 
-            ViewData["Numbers"] = Enumerable.Range(1, 5)
-                .Select(n => new SelectListItem
-                {
-                    Value = n.ToString(),
-                    Text = n.ToString()
-                }).ToList();
-
-
-            return View(projectsValueVM);
-
-            //return View();
+            return View(vm);
         }
 
         [HttpPost]
@@ -324,6 +316,7 @@ namespace CostEstimate.Controllers
 
             var project = await _context.Projects
                 .SingleOrDefaultAsync(m => m.Id == id);
+
             if (project == null)
             {
                 return NotFound();
@@ -332,15 +325,25 @@ namespace CostEstimate.Controllers
             return View(project);
         }
         // GET: Movies/Delete/5
-        public async Task<IActionResult> DeleteCostModel(int? id)
+        public async Task<IActionResult> DeleteCostModel(int? id, int projectid)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var costmodel = await _context.CostModel
-                .SingleOrDefaultAsync(m => m.Id == id);
+            //var costmodel = await _context.CostModel
+            //    .SingleOrDefaultAsync(m => m.Id == id);
+            var costmodel = await (from cost in _context.CostModel
+                         join proj in _context.Projects
+                         on cost.ProjectId equals proj.Id
+                         where cost.Id == id
+                         select new CostProjectViewModel
+                         {
+                             Projects = proj,
+                             CostModel = cost
+                         }).SingleOrDefaultAsync();
+
             if (costmodel == null)
             {
                 return NotFound();
@@ -349,7 +352,7 @@ namespace CostEstimate.Controllers
             return View(costmodel);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Movies/DeleteCostModelConfirmed/5
         [HttpPost, ActionName("DeleteCostModelConfirmed")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteCostModel(int id)

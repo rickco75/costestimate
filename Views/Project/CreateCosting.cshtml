@@ -9,19 +9,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
 
-                @*<select asp-for="ProjectId" asp-items="@((List<SelectList>)ViewData["projects"])">
-            <option value="">--choose--</option>
-        </select>*@
-                Project Id: 
-                <p>
-                    <select asp-for="CostModel.ProjectId" asp-items="@((List<SelectListItem>)ViewData["Numbers"])">
-                        <option value="">Pick one</option>
+                <p class="form-control">
+                <strong>Project Id:</strong> 
+                    <select asp-for="CostModel.ProjectId" asp-items="Model.Projects">
+                        <option value="">--Choose Job Name--</option>
                     </select>
                 </p>
-                @*<label asp-for="CostModel.ProjectId" class="control-label"></label>
-                <input asp-for="CostModel.ProjectId" class="form-control" />
-                <span asp-validation-for="CostModel.ProjectId" class="text-danger"></span>*@
-
                 <label asp-for="CostModel.AveragePerSqFootFinsihed" class="control-label"></label>
                 <input asp-for="CostModel.AveragePerSqFootFinsihed" class="form-control" />
                 <span asp-validation-for="CostModel.AveragePerSqFootFinsihed" class="text-danger"></span>
