@@ -11,9 +11,10 @@ using System;
 namespace CostEstimate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180612171927_AddedNonConstructionItemsWithForeignKey")]
+    partial class AddedNonConstructionItemsWithForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +125,7 @@ namespace CostEstimate.Data.Migrations
 
                     b.Property<double>("BuildersWorkmanCompIns");
 
-                    b.Property<double>("BuildingPermits");
+                    b.Property<double>("BuildingPermites");
 
                     b.Property<double>("ConstructionLoanFee");
 
@@ -133,6 +134,8 @@ namespace CostEstimate.Data.Migrations
                     b.Property<double>("InspectionFeesAndCO");
 
                     b.Property<double>("Misc");
+
+                    b.Property<int?>("ProjectForeignKey");
 
                     b.Property<int>("ProjectId");
 
@@ -147,6 +150,8 @@ namespace CostEstimate.Data.Migrations
                     b.Property<double>("WorkmansCompInsurances");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectForeignKey");
 
                     b.ToTable("NonConstructionItems");
                 });
@@ -314,6 +319,13 @@ namespace CostEstimate.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CostEstimate.Models.NonConstructionItems", b =>
+                {
+                    b.HasOne("CostEstimate.Models.Projects", "Projects")
+                        .WithMany()
+                        .HasForeignKey("ProjectForeignKey");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

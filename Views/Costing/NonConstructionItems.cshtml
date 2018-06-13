@@ -1,0 +1,111 @@
+﻿@model CostEstimate.Models.ProjectNonConstructionItemsViewModel
+<hr />
+<p>
+    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a> | <a asp-action="ViewCost" asp-controller="Project">View Cost Models</a> | <a asp-action="CreateCosting" asp-controller="Project">Create Cost Model</a> @*| <a asp-controller="costing" asp-action="Index">Costing</a>*@
+</p>
+<hr />
+<h3>@Model.project.JobName (Non Construction Items)</h3>
+<form asp-action="CreateNonConstructionItems">
+
+    <input type="hidden" asp-for="project.Id" />
+    <input type="hidden" name="id" value="@Model.project.Id" />
+    @*<input type="hidden" name="ProjectId" value="@Model.project.Id" />*@
+
+    @*<input asp-for="nonconstructionitems.ProjectId" hidden class="form-control" />*@
+
+    <table class="table-striped table-condensed" border="1">
+        <tr>
+            <td>
+                <label asp-for="nonconstructionitems.ArchitectPlans" class="control-label"></label>
+                <input asp-for="nonconstructionitems.ArchitectPlans" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.ArchitectPlans" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.AttorneyFee" class="control-label"></label>
+                <input asp-for="nonconstructionitems.AttorneyFee" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.AttorneyFee" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.BuildersLiabilityInsurances" class="control-label"></label>
+                <input asp-for="nonconstructionitems.BuildersLiabilityInsurances" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.BuildersLiabilityInsurances" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="nonconstructionitems.BuildersRiskInsurances" class="control-label"></label>
+                <input asp-for="nonconstructionitems.BuildersRiskInsurances" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.BuildersRiskInsurances" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.BuildersWorkmanCompIns" class="control-label"></label>
+                <input asp-for="nonconstructionitems.BuildersWorkmanCompIns" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.BuildersWorkmanCompIns" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.BuildingPermits" class="control-label"></label>
+                <input asp-for="nonconstructionitems.BuildingPermits" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.BuildingPermits" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="nonconstructionitems.ConstructionLoanFee" class="control-label"></label>
+                <input asp-for="nonconstructionitems.ConstructionLoanFee" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.ConstructionLoanFee" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.ConstructionLoanInterest" class="control-label"></label>
+                <input asp-for="nonconstructionitems.ConstructionLoanInterest" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.ConstructionLoanInterest" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.InspectionFeesAndCO" class="control-label"></label>
+                <input asp-for="nonconstructionitems.InspectionFeesAndCO" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.InspectionFeesAndCO" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="nonconstructionitems.Misc" class="control-label"></label>
+                <input asp-for="nonconstructionitems.Misc" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.Misc" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.PropertyTaxes" class="control-label"></label>
+                <input asp-for="nonconstructionitems.PropertyTaxes" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.PropertyTaxes" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.TempElectricServiceMeter" class="control-label"></label>
+                <input asp-for="nonconstructionitems.TempElectricServiceMeter" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.TempElectricServiceMeter" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="nonconstructionitems.WarrantyServices" class="control-label"></label>
+                <input asp-for="nonconstructionitems.WarrantyServices" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.WarrantyServices" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.WaterMeter" class="control-label"></label>
+                <input asp-for="nonconstructionitems.WaterMeter" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.WaterMeter" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="nonconstructionitems.WorkmansCompInsurances" class="control-label"></label>
+                <input asp-for="nonconstructionitems.WorkmansCompInsurances" class="form-control" />
+                <span asp-validation-for="nonconstructionitems.WorkmansCompInsurances" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </td>
+            <td colspan="2" align="right">
+                <input type="button" value="Next" class="btn btn-default" />
+            </td>
+        </tr>
+    </table>
+</form>

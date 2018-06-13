@@ -26,5 +26,6 @@ namespace CostEstimate.Data
         public DbSet<Options> Options { get; set; }
         public DbSet<Projects> Projects { get; set; }
         public DbSet<CostModel> CostModel { get; set; }
+        public DbSet<NonConstructionItems> NonConstructionItems { get; set; }
     }
 }

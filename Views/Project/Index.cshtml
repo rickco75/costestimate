@@ -7,7 +7,8 @@
             <input type="submit" value="Filter" />
         </p>
     </form>
-    <p><a asp-action="Create">Create New Project</a> | <a asp-action="ViewCost">View Cost Models</a> | <a asp-action="CreateCosting">Create Cost Model</a></p>
+    <p><a asp-action="Create">Create New Project</a> | <a asp-action="ViewCost">View Cost Models</a> | <a asp-action="CreateCosting">Create Cost Model</a> | 
+        <a asp-controller="costing" asp-action="Index">Costing</a></p>
 <hr />
     <table class="table table-striped">
         <thead>
@@ -31,7 +32,7 @@
         <tbody>
             @foreach (var item in Model){
             <tr>
-                <td><a asp-action="ViewCost" asp-route-id="@item.Id">@item.JobName</a></td>
+                <td><a asp-action="NonConstructionItems" asp-controller="Costing" asp-route-id="@item.Id">@item.JobName</a></td>
                 <td>@item.City</td>
                 <td>@item.State</td>
                 <td>@item.ZipCode</td>

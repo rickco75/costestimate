@@ -11,9 +11,10 @@ using System;
 namespace CostEstimate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180612172213_AddedNonConstructionItemsWithForeignKey2")]
+    partial class AddedNonConstructionItemsWithForeignKey2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +125,7 @@ namespace CostEstimate.Data.Migrations
 
                     b.Property<double>("BuildersWorkmanCompIns");
 
-                    b.Property<double>("BuildingPermits");
+                    b.Property<double>("BuildingPermites");
 
                     b.Property<double>("ConstructionLoanFee");
 
@@ -147,6 +148,8 @@ namespace CostEstimate.Data.Migrations
                     b.Property<double>("WorkmansCompInsurances");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("NonConstructionItems");
                 });
@@ -314,6 +317,14 @@ namespace CostEstimate.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CostEstimate.Models.NonConstructionItems", b =>
+                {
+                    b.HasOne("CostEstimate.Models.Projects", "Projects")
+                        .WithMany()
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -11,9 +11,10 @@ using System;
 namespace CostEstimate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180613151647_droppedForeignKeyNonConstructionItems")]
+    partial class droppedForeignKeyNonConstructionItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,54 +3,66 @@
 <hr />
 <p><a asp-action="Index">View Projects</a> | <a asp-action="Create">Create New Project</a> | <a asp-action="ViewCost">View Cost Models</a> | <a asp-action="CreateCosting">Create Cost Model</a></p>
 <hr />
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>JobName</th>
-            @*<th>ProjectId</th>*@
-            <th>AveragePerSqFootFinsihed</th>
-            <th>AvgCostGarage</th>
-            <th>AvgCostMainLevel</th>
-            <th>AvgCostUnfinsihedBasement</th>
-            <th>AvgCostUpperLoft</th>
-            <th>AvgPerSqFtFinBasement</th>
-            <th>BasementUnfinishedSqFeet</th>
-            <th>FinishedBasement</th>
-            <th>Garage</th>
-            <th>MainLevelSquareFeet</th>
-            <th>TotalSquareFtHouse</th>
-            <th>TotalSquareFtUnderRoof</th>
-            <th>UpperLevelLoft</th>
-            <th colspan="2">&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+
+
+@if (Model.Count() > 0)
+{
+
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@item.Projects.JobName</td>
-                @*<td>@item.CostModel.ProjectId</td>*@
-                <td>@item.CostModel.AveragePerSqFootFinsihed</td>
-                <td>@item.CostModel.AvgCostGarage</td>
-                <td>@item.CostModel.AvgCostMainLevel</td>
-                <td>@item.CostModel.AvgCostUnfinsihedBasement</td>
-                <td>@item.CostModel.AvgCostUpperLoft</td>
-                <td>@item.CostModel.AvgPerSqFtFinBasement</td>
-                <td>@item.CostModel.BasementUnfinishedSqFeet</td>
-                <td>@item.CostModel.FinishedBasement</td>
-                <td>@item.CostModel.Garage</td>
-                <td>@item.CostModel.MainLevelSquareFeet</td>
-                <td>@item.CostModel.TotalSquareFtHouse</td>
-                <td>@item.CostModel.TotalSquareFtUnderRoof</td>
-                <td>@item.CostModel.UpperLevelLoft</td>
-                <td>
-                    @*<a asp-action="Costing" asp-route-id="@item.Id">Edit</a>*@
-                    @Html.ActionLink("Edit", "Costing", "Project", new { id = item.CostModel.Id, projectId = item.CostModel.ProjectId }, null)
-                </td>
-                <td>
-                    @*<a asp-action="DeleteCostModel" asp-route-id="@item.CostModel.Id">Delete</a></td>*@
-                    @Html.ActionLink("Delete", "DeleteCostModel", "Project", new { id = item.CostModel.Id, projectId = item.CostModel.ProjectId }, null)
+                <th>Job Name</th>
+                @*<th>ProjectId</th>*@
+                <th>AveragePerSqFootFinsihed</th>
+                <th>AvgCostGarage</th>
+                <th>AvgCostMainLevel</th>
+                <th>AvgCostUnfinsihedBasement</th>
+                <th>AvgCostUpperLoft</th>
+                <th>AvgPerSqFtFinBasement</th>
+                <th>BasementUnfinishedSqFeet</th>
+                <th>FinishedBasement</th>
+                <th>Garage</th>
+                <th>MainLevelSquareFeet</th>
+                <th>TotalSquareFtHouse</th>
+                <th>TotalSquareFtUnderRoof</th>
+                <th>UpperLevelLoft</th>
+                <th colspan="2">&nbsp;</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td><a asp-action="Edit" asp-route-id="ProjectId">@item.Projects.JobName</a></td>*@
+                    <td>@Html.ActionLink(@item.Projects.JobName, "Edit", "Project", new { id = item.CostModel.ProjectId }, null)</td>
+                    @*<td>@item.CostModel.ProjectId</td>*@
+                    <td>@item.CostModel.AveragePerSqFootFinsihed</td>
+                    <td>@item.CostModel.AvgCostGarage</td>
+                    <td>@item.CostModel.AvgCostMainLevel</td>
+                    <td>@item.CostModel.AvgCostUnfinsihedBasement</td>
+                    <td>@item.CostModel.AvgCostUpperLoft</td>
+                    <td>@item.CostModel.AvgPerSqFtFinBasement</td>
+                    <td>@item.CostModel.BasementUnfinishedSqFeet</td>
+                    <td>@item.CostModel.FinishedBasement</td>
+                    <td>@item.CostModel.Garage</td>
+                    <td>@item.CostModel.MainLevelSquareFeet</td>
+                    <td>@item.CostModel.TotalSquareFtHouse</td>
+                    <td>@item.CostModel.TotalSquareFtUnderRoof</td>
+                    <td>@item.CostModel.UpperLevelLoft</td>
+                    <td>
+                        @*<a asp-action="Costing" asp-route-id="@item.Id">Edit</a>*@
+                        @Html.ActionLink("Edit", "Costing", "Project", new { id = item.CostModel.Id, projectId = item.CostModel.ProjectId }, null)
+                    </td>
+                    <td>
+                        @*<a asp-action="DeleteCostModel" asp-route-id="@item.CostModel.Id">Delete</a></td>*@
+                        @Html.ActionLink("Delete", "DeleteCostModel", "Project", new { id = item.CostModel.Id, projectId = item.CostModel.ProjectId }, null)
+                </tr>
+            }
+        </tbody>
+        
+    </table>
+}
+else
+{
+    <h2> No Records Found</h2>
+}

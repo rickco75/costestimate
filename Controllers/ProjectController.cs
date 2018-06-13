@@ -169,7 +169,9 @@ namespace CostEstimate.Controllers
                      };
 
             }
-            return View(await cm.ToListAsync());
+            await cm.ToListAsync();
+
+            return View(cm);
         }
 
         [Authorize]
