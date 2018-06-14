@@ -1,0 +1,84 @@
+﻿@model CostEstimate.Models.ViewModels.ClearingAndGradingProjectViewModel
+<hr />
+<p>
+    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a>
+</p>
+<hr />
+<h3>@Model.Projects.JobName (Clearing and Grading)</h3>
+<form asp-action="CreateClearingAndGrading">
+
+    <input type="hidden" asp-for="ClearingAndGrading.Id" />
+    <input type="hidden" name="id" value="@Model.Projects.Id" />
+
+    <table class="table-striped table-condensed" border="1">
+        <tr>
+            <td>
+                <label asp-for="ClearingAndGrading.BasementGrade" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.BasementGrade" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.BasementGrade" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="ClearingAndGrading.Culvert" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.Culvert" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.Culvert" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="ClearingAndGrading.ErosControlMaterials" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.ErosControlMaterials" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.ErosControlMaterials" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="ClearingAndGrading.ErosControlSubLabor" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.ErosControlSubLabor" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.ErosControlSubLabor" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="ClearingAndGrading.GravelPadsAndFabric" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.GravelPadsAndFabric" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.GravelPadsAndFabric" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="ClearingAndGrading.InitialWallsBackfill" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.InitialWallsBackfill" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.InitialWallsBackfill" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="ClearingAndGrading.RoughGrade" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.RoughGrade" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.RoughGrade" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="ClearingAndGrading.SepticSystem" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.SepticSystem" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.SepticSystem" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="ClearingAndGrading.SurveyCost" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.SurveyCost" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.SurveyCost" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <label asp-for="ClearingAndGrading.WaterLine" class="control-label"></label>
+                <input asp-for="ClearingAndGrading.WaterLine" class="form-control" />
+                <span asp-validation-for="ClearingAndGrading.WaterLine" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </td>
+            <td align="center">
+                <a asp-controller="Costing" asp-action="NonConstructionItems" asp-route-id="@Model.Projects.Id" class="btn btn-default">Previous</a>
+            </td>
+            <td align="right">
+                <a asp-controller="Costing" asp-action="Foundation" asp-route-id="@Model.Projects.Id" class="btn btn-default">Next</a>
+            </td>
+        </tr>
+    </table>
+</form>

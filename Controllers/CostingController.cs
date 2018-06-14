@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CostEstimate.Data;
 using CostEstimate.Models;
+using CostEstimate.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -27,7 +28,6 @@ namespace CostEstimate.Controllers
 
         public IActionResult NonConstructionItems(int? id)
         {
-            //var vm = new ProjectNonConstructionItemsViewModel();
 
             var record = (from p in _context.Projects
                           join c in _context.NonConstructionItems
@@ -55,6 +55,37 @@ namespace CostEstimate.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("NonConstructionItems", "Costing",new {id});
+        }
+
+        public IActionResult ClearingAndGrading(int? id)
+        {
+            var record = (from p in _context.Projects
+                          join c in _context.ClearingAndGrading
+                          on p.Id equals c.ProjectId into ps
+                          from c in ps.DefaultIfEmpty()
+                          where p.Id == id
+                          select new ClearingAndGradingProjectViewModel
+                          {
+                              Projects = p,
+                              ClearingAndGrading = c
+                          }).FirstOrDefault();
+
+            if (record == null)
+            {
+                return RedirectToAction("Index", "Project");
+            }
+
+            return View(record);
+        }
+
+        [HttpPost]
+        public IActionResult CreateClearingAndGrading(ClearingAndGrading clearingAndGrading, int? id, Projects projects)
+        {
+            clearingAndGrading.ProjectId = projects.Id;
+            _context.Update(clearingAndGrading);
+            _context.SaveChanges();
+
+            return RedirectToAction("ClearingAndGrading", "Costing", new { id });
         }
     }
 }

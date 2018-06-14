@@ -1,13 +1,14 @@
 ﻿@model CostEstimate.Models.ProjectNonConstructionItemsViewModel
 <hr />
 <p>
-    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a> | <a asp-action="ViewCost" asp-controller="Project">View Cost Models</a> | <a asp-action="CreateCosting" asp-controller="Project">Create Cost Model</a> @*| <a asp-controller="costing" asp-action="Index">Costing</a>*@
+    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a>
 </p>
 <hr />
 <h3>@Model.project.JobName (Non Construction Items)</h3>
 <form asp-action="CreateNonConstructionItems">
 
-    <input type="hidden" asp-for="project.Id" />
+    <input type="hidden" asp-for="nonconstructionitems.Id" />
+    @*<input type="hidden" asp-for="project.Id" />*@
     <input type="hidden" name="id" value="@Model.project.Id" />
     @*<input type="hidden" name="ProjectId" value="@Model.project.Id" />*@
 
@@ -104,7 +105,7 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </td>
             <td colspan="2" align="right">
-                <input type="button" value="Next" class="btn btn-default" />
+                <a asp-controller="Costing" asp-action="ClearingAndGrading" asp-route-id="@Model.project.Id" class="btn btn-default">Next</a>
             </td>
         </tr>
     </table>

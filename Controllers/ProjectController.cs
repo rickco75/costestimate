@@ -65,55 +65,15 @@ namespace CostEstimate.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //[Authorize]
-        //public IActionResult Costing(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //var record = (from p in _context.Projects
-        //              join c in _context.CostModel
-        //              on p.Id equals c.ProjectId into ps
-        //              from c in ps.DefaultIfEmpty()
-        //              where p.Id == id
-        //              select new ProjectCostViewModel
-        //              {
-        //                  Projects = p,
-        //                  CostModel = c
-        //              }).FirstOrDefault();
-        //    if (record == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(record);
-        //}
-
-
         public IActionResult Create()
         {
             return View();
         }
 
-        //public async Task<IActionResult> CreateCostModel()
-        //{
-        //    IQueryable<string> projectValue = from p in _context.Projects
-        //                                      orderby p.JobName
-        //                                      select (p.Id.ToString() + p.JobName);
-
-        //    var projectsValueVM = new ProjectsValueViewModel();
-        //    projectsValueVM.projectValues = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(await projectValue.Distinct().ToListAsync());
-
-        //    return View(projectsValueVM);
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCostModel([Bind("Id,AveragePerSqFootFinished,AvgCostGarage,AvgCostMainLevel,projectValues, AvgCostUnfinsihedBasement,AvgCostUpperLoft,AvgPerSqFtFinBasement,BasementUnfinishedSqFeet,FinishedBasement,Garage,MainLevelSquareFeet,TotalSquareFtHouse,TotalSquareFtUnderRoof,UpperLevelLoft")] CostModel costModel)
         {
-            //var record = (from p in _context.Projects where p.JobName =)
             if (ModelState.IsValid)
             {
                 costModel.ProjectId = 1;
