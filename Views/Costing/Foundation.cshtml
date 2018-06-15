@@ -1,0 +1,84 @@
+﻿@model CostEstimate.Models.ViewModels.FoundationProjectViewModel
+<hr />
+<p>
+    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a>
+</p>
+<hr />
+<h3>@Model.Projects.JobName (Foundation)</h3>
+<form asp-action="CreateFoundation">
+
+    <input type="hidden" asp-for="Foundation.Id" />
+    <input type="hidden" name="id" value="@Model.Projects.Id" />
+
+    <table class="table-striped table-condensed" border="1">
+        <tr>
+            <td>
+                <label asp-for="Foundation.AdditionalSlabAsNeeded" class="control-label"></label>
+                <input asp-for="Foundation.AdditionalSlabAsNeeded" class="form-control" />
+                <span asp-validation-for="Foundation.AdditionalSlabAsNeeded" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="Foundation.AdditionalWallAsNeeded" class="control-label"></label>
+                <input asp-for="Foundation.AdditionalWallAsNeeded" class="form-control" />
+                <span asp-validation-for="Foundation.AdditionalWallAsNeeded" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="Foundation.ConcreteForSlab" class="control-label"></label>
+                <input asp-for="Foundation.ConcreteForSlab" class="form-control" />
+                <span asp-validation-for="Foundation.ConcreteForSlab" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Foundation.ConcreteForWallAndFooting" class="control-label"></label>
+                <input asp-for="Foundation.ConcreteForWallAndFooting" class="form-control" />
+                <span asp-validation-for="Foundation.ConcreteForWallAndFooting" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="Foundation.ConcretePumpAsNeeded" class="control-label"></label>
+                <input asp-for="Foundation.ConcretePumpAsNeeded" class="form-control" />
+                <span asp-validation-for="Foundation.ConcretePumpAsNeeded" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="Foundation.FootingWallFormMaterial" class="control-label"></label>
+                <input asp-for="Foundation.FootingWallFormMaterial" class="form-control" />
+                <span asp-validation-for="Foundation.FootingWallFormMaterial" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Foundation.FormMaterialSlab" class="control-label"></label>
+                <input asp-for="Foundation.FormMaterialSlab" class="form-control" />
+                <span asp-validation-for="Foundation.FormMaterialSlab" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="Foundation.LaborForWallAndFooting" class="control-label"></label>
+                <input asp-for="Foundation.LaborForWallAndFooting" class="form-control" />
+                <span asp-validation-for="Foundation.LaborForWallAndFooting" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="Foundation.TermiteTreatment" class="control-label"></label>
+                <input asp-for="Foundation.TermiteTreatment" class="form-control" />
+                <span asp-validation-for="Foundation.TermiteTreatment" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <label asp-for="Foundation.Waterproofing" class="control-label"></label>
+                <input asp-for="Foundation.Waterproofing" class="form-control" />
+                <span asp-validation-for="Foundation.Waterproofing" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </td>
+            <td align="center">
+                <a asp-controller="Costing" asp-action="ClearingAndGrading" asp-route-id="@Model.Projects.Id" class="btn btn-default">Previous</a>
+            </td>
+            <td align="right">
+                <a asp-controller="Costing" asp-action="FramingAndDryIn" asp-route-id="@Model.Projects.Id" class="btn btn-default">Next</a>
+            </td>
+        </tr>
+    </table>
+</form>

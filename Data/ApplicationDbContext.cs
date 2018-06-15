@@ -28,5 +28,9 @@ namespace CostEstimate.Data
         public DbSet<CostModel> CostModel { get; set; }
         public DbSet<NonConstructionItems> NonConstructionItems { get; set; }
         public DbSet<ClearingAndGrading> ClearingAndGrading { get; set; }
+        public DbSet<Foundation> Foundation { get; set; }
+        public DbSet<FramingAndDryIn> FramingAndDryIn { get; set; }
+        public DbSet<InsulationAndSheetrock> InsulationAndSheetrock { get; set; }
+
     }
 }

@@ -1,0 +1,140 @@
+﻿@model CostEstimate.Models.ViewModels.FramingAndDryInProjectViewModel
+<hr />
+<p>
+    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a>
+</p>
+<hr />
+<h3>@Model.Projects.JobName (Framing And Dry In)</h3>
+<form asp-action="CreateFramingAndDryIn">
+
+    <input type="hidden" asp-for="FramingAndDryIn.Id" />
+    <input type="hidden" name="id" value="@Model.Projects.Id" />
+
+    <table class="table-striped table-condensed" border="1">
+        <tr>
+            <td>
+                <label asp-for="FramingAndDryIn.AdditionalDecks" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.AdditionalDecks" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.AdditionalDecks" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.CoveredDecks" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.CoveredDecks" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.CoveredDecks" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.CoveredDecksLabor" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.CoveredDecksLabor" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.CoveredDecksLabor" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="FramingAndDryIn.ExteriorDeckBalusters" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.ExteriorDeckBalusters" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.ExteriorDeckBalusters" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.ExteriorDeckLabor" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.ExteriorDeckLabor" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.ExteriorDeckLabor" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.ExteriorDeckMaterial" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.ExteriorDeckMaterial" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.ExteriorDeckMaterial" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="FramingAndDryIn.ExteriorDoors" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.ExteriorDoors" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.ExteriorDoors" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.FirePlaces" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.FirePlaces" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.FirePlaces" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.FramingLabor" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.FramingLabor" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.FramingLabor" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="FramingAndDryIn.FramingMaterial" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.FramingMaterial" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.FramingMaterial" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.FrontDoor" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.FrontDoor" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.FrontDoor" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.FrontPorch" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.FrontPorch" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.FrontPorch" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="FramingAndDryIn.GarageDoor" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.GarageDoor" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.GarageDoor" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.NailAndMisc" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.NailAndMisc" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.NailAndMisc" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.RoofLabor" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.RoofLabor" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.RoofLabor" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="FramingAndDryIn.RoofMaterialShingle" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.RoofMaterialShingle" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.RoofMaterialShingle" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.SlidingLabor" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.SlidingLabor" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.SlidingLabor" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="FramingAndDryIn.SlidingMaterial" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.SlidingMaterial" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.SlidingMaterial" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="FramingAndDryIn.StoneVeneer" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.StoneVeneer" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.StoneVeneer" class="text-danger"></span>
+            </td>
+            <td colspan="2">
+                <label asp-for="FramingAndDryIn.WindowsSliders" class="control-label"></label>
+                <input asp-for="FramingAndDryIn.WindowsSliders" class="form-control" />
+                <span asp-validation-for="FramingAndDryIn.WindowsSliders" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </td>
+            <td align="center">
+                <a asp-controller="Costing" asp-action="Foundation" asp-route-id="@Model.Projects.Id" class="btn btn-default">Previous</a>
+            </td>
+            <td align="right">
+                <a asp-controller="Costing" asp-action="InsulationAndSheetrock" asp-route-id="@Model.Projects.Id" class="btn btn-default">Next</a>
+            </td>
+        </tr>
+    </table>
+</form>

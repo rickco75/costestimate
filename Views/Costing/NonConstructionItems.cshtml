@@ -104,7 +104,10 @@
             <td>
                 <input type="submit" value="Save" class="btn btn-default" />
             </td>
-            <td colspan="2" align="right">
+            <td align="center">
+                <a asp-controller="Project" asp-action="Index" class="btn btn-default">Previous</a>
+            </td>
+            <td align="center">
                 <a asp-controller="Costing" asp-action="ClearingAndGrading" asp-route-id="@Model.project.Id" class="btn btn-default">Next</a>
             </td>
         </tr>

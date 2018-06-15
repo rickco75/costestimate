@@ -11,9 +11,10 @@ using System;
 namespace CostEstimate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180615151831_addedFramingAndDryInTable")]
+    partial class addedFramingAndDryInTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -223,28 +224,6 @@ namespace CostEstimate.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FramingAndDryIn");
-                });
-
-            modelBuilder.Entity("CostEstimate.Models.InsulationAndSheetrock", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<double>("FireCaulk");
-
-                    b.Property<double>("Insulation");
-
-                    b.Property<int>("ProjectId");
-
-                    b.Property<double>("RoofInsulation");
-
-                    b.Property<double>("SheetrockAndFinish");
-
-                    b.Property<double>("Soundproofing");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InsulationAndSheetrock");
                 });
 
             modelBuilder.Entity("CostEstimate.Models.NonConstructionItems", b =>

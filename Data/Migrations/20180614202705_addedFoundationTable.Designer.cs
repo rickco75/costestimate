@@ -11,9 +11,10 @@ using System;
 namespace CostEstimate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180614202705_addedFoundationTable")]
+    partial class addedFoundationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,80 +172,6 @@ namespace CostEstimate.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Foundation");
-                });
-
-            modelBuilder.Entity("CostEstimate.Models.FramingAndDryIn", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<double>("AdditionalDecks");
-
-                    b.Property<double>("CoveredDecks");
-
-                    b.Property<double>("CoveredDecksLabor");
-
-                    b.Property<double>("ExteriorDeckBalusters");
-
-                    b.Property<double>("ExteriorDeckLabor");
-
-                    b.Property<double>("ExteriorDeckMaterial");
-
-                    b.Property<double>("ExteriorDoors");
-
-                    b.Property<double>("FirePlaces");
-
-                    b.Property<double>("FramingLabor");
-
-                    b.Property<double>("FramingMaterial");
-
-                    b.Property<double>("FrontDoor");
-
-                    b.Property<double>("FrontPorch");
-
-                    b.Property<double>("GarageDoor");
-
-                    b.Property<double>("NailAndMisc");
-
-                    b.Property<int>("ProjectId");
-
-                    b.Property<double>("RoofLabor");
-
-                    b.Property<double>("RoofMaterialShingle");
-
-                    b.Property<double>("SlidingLabor");
-
-                    b.Property<double>("SlidingMaterial");
-
-                    b.Property<double>("StoneVeneer");
-
-                    b.Property<double>("WindowsSliders");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FramingAndDryIn");
-                });
-
-            modelBuilder.Entity("CostEstimate.Models.InsulationAndSheetrock", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<double>("FireCaulk");
-
-                    b.Property<double>("Insulation");
-
-                    b.Property<int>("ProjectId");
-
-                    b.Property<double>("RoofInsulation");
-
-                    b.Property<double>("SheetrockAndFinish");
-
-                    b.Property<double>("Soundproofing");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InsulationAndSheetrock");
                 });
 
             modelBuilder.Entity("CostEstimate.Models.NonConstructionItems", b =>

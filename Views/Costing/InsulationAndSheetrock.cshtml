@@ -1,0 +1,55 @@
+﻿@model CostEstimate.Models.ViewModels.InsulationAndSheetrockProjectViewModel
+<hr />
+<p>
+    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a>
+</p>
+<hr />
+<h3>@Model.Projects.JobName (Insulation and Sheetrock)</h3>
+<form asp-action="CreateInsulationAndSheetrock">
+
+    <input type="hidden" asp-for="InsulationAndSheetrock.Id" />
+    <input type="hidden" name="id" value="@Model.Projects.Id" />
+
+    <table class="table-striped table-condensed" border="1">
+        <tr>
+            <td>
+                <label asp-for="InsulationAndSheetrock.Insulation" class="control-label"></label>
+                <input asp-for="InsulationAndSheetrock.Insulation" class="form-control" />
+                <span asp-validation-for="InsulationAndSheetrock.Insulation" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="InsulationAndSheetrock.RoofInsulation" class="control-label"></label>
+                <input asp-for="InsulationAndSheetrock.RoofInsulation" class="form-control" />
+                <span asp-validation-for="InsulationAndSheetrock.RoofInsulation" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="InsulationAndSheetrock.SheetrockAndFinish" class="control-label"></label>
+                <input asp-for="InsulationAndSheetrock.SheetrockAndFinish" class="form-control" />
+                <span asp-validation-for="InsulationAndSheetrock.SheetrockAndFinish" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="InsulationAndSheetrock.Soundproofing" class="control-label"></label>
+                <input asp-for="InsulationAndSheetrock.Soundproofing" class="form-control" />
+                <span asp-validation-for="InsulationAndSheetrock.Soundproofing" class="text-danger"></span>
+            </td>
+            <td colspan="2">
+                <label asp-for="InsulationAndSheetrock.FireCaulk" class="control-label"></label>
+                <input asp-for="InsulationAndSheetrock.FireCaulk" class="form-control" />
+                <span asp-validation-for="InsulationAndSheetrock.FireCaulk" class="text-danger"></span>
+            </td>
+        </tr>   
+        <tr>
+            <td>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </td>
+            <td align="center">
+                <a asp-controller="Costing" asp-action="FramingAndDryIn" asp-route-id="@Model.Projects.Id" class="btn btn-default">Previous</a>
+            </td>
+            <td align="right">
+                <a asp-controller="Costing" asp-action="CabinetsAndTops" asp-route-id="@Model.Projects.Id" class="btn btn-default">Next</a>
+            </td>
+        </tr>
+    </table>
+</form>
