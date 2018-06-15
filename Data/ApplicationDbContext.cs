@@ -31,6 +31,7 @@ namespace CostEstimate.Data
         public DbSet<Foundation> Foundation { get; set; }
         public DbSet<FramingAndDryIn> FramingAndDryIn { get; set; }
         public DbSet<InsulationAndSheetrock> InsulationAndSheetrock { get; set; }
+        public DbSet<CabinetsAndTops> CabinetsAndTops { get; set; }
 
     }
 }

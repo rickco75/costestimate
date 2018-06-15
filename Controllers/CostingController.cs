@@ -181,5 +181,38 @@ namespace CostEstimate.Controllers
             return RedirectToAction("InsulationAndSheetrock", "Costing", new { id });
         }
 
+        public IActionResult CabinetsAndTops(int? id)
+        {
+
+            var record = (from p in _context.Projects
+                          join c in _context.CabinetsAndTops
+                          on p.Id equals c.ProjectId into ps
+                          from c in ps.DefaultIfEmpty()
+                          where p.Id == id
+                          select new CabinetsAndTopsProjectsViewModel
+                          {
+                              Projects = p,
+                              CabinetsAndTops = c
+                          }).FirstOrDefault();
+
+            if (record == null)
+            {
+                return RedirectToAction("Index", "Project");
+            }
+            return View(record);
+        }
+
+        [HttpPost]
+        public IActionResult CreateCabinetsAndTops(CabinetsAndTops cabinetsAndTops, int? id, Projects projects)
+        {
+            cabinetsAndTops.ProjectId = projects.Id;
+            _context.Update(cabinetsAndTops);
+            _context.SaveChanges();
+
+            return RedirectToAction("CabinetsAndTops", "Costing", new { id });
+        }
+
+
+
     }
 }

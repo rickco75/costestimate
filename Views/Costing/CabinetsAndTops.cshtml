@@ -1,0 +1,60 @@
+﻿@model CostEstimate.Models.ViewModels.CabinetsAndTopsProjectsViewModel
+<hr />
+<p>
+    <a asp-action="Index" asp-controller="Project">View Projects</a> | <a asp-action="Create" asp-controller="Project">Create New Project</a>
+</p>
+<hr />
+<h3>@Model.Projects.JobName (Cabinets and Tops)</h3>
+<form asp-action="CreateCabinetsAndTops">
+
+    <input type="hidden" asp-for="CabinetsAndTops.Id" />
+    <input type="hidden" name="id" value="@Model.Projects.Id" />
+
+    <table class="table-striped table-condensed" border="1">
+        <tr>
+            <td>
+                <label asp-for="CabinetsAndTops.CabinetsKitchen" class="control-label"></label>
+                <input asp-for="CabinetsAndTops.CabinetsKitchen" class="form-control" />
+                <span asp-validation-for="CabinetsAndTops.CabinetsKitchen" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="CabinetsAndTops.GraniteCounterTops" class="control-label"></label>
+                <input asp-for="CabinetsAndTops.GraniteCounterTops" class="form-control" />
+                <span asp-validation-for="CabinetsAndTops.GraniteCounterTops" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="CabinetsAndTops.CabinetsBaths" class="control-label"></label>
+                <input asp-for="CabinetsAndTops.CabinetsBaths" class="form-control" />
+                <span asp-validation-for="CabinetsAndTops.CabinetsBaths" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="CabinetsAndTops.CounterTopBaths" class="control-label"></label>
+                <input asp-for="CabinetsAndTops.CounterTopBaths" class="form-control" />
+                <span asp-validation-for="CabinetsAndTops.CounterTopBaths" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="CabinetsAndTops.WetBarCabinets" class="control-label"></label>
+                <input asp-for="CabinetsAndTops.WetBarCabinets" class="form-control" />
+                <span asp-validation-for="CabinetsAndTops.WetBarCabinets" class="text-danger"></span>
+            </td>
+            <td>
+                <label asp-for="CabinetsAndTops.WetBar" class="control-label"></label>
+                <input asp-for="CabinetsAndTops.WetBar" class="form-control" />
+                <span asp-validation-for="CabinetsAndTops.WetBar" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </td>
+            <td align="center">
+                <a asp-controller="Costing" asp-action="InsulationAndSheetrock" asp-route-id="@Model.Projects.Id" class="btn btn-default">Previous</a>
+            </td>
+            <td align="right">
+                <a asp-controller="Costing" asp-action="InteriorTrim" asp-route-id="@Model.Projects.Id" class="btn btn-default">Next</a>
+            </td>
+        </tr>
+    </table>
+</form>
